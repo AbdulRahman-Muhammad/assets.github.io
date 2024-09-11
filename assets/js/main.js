@@ -1,3 +1,4 @@
+document.getElementById("preloader").classList.add('loaded');
 (function($) {
 "use strict";
 
