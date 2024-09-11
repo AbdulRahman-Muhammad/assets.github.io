@@ -1,5 +1,5 @@
 document.getElementById("preloader").classList.add('loaded');
-(function($) {
+(function(document.querySelector) {
 "use strict";
 
 /*------------------------------------------------------------------
@@ -42,9 +42,9 @@ document.getElementById("preloader").classList.add('loaded');
 /*==========================================================
 				1. my owl function
 ======================================================================*/
-$.fn.myOwl = function(options) {
+document.querySelector.fn.myOwl = function(options) {
 
-	var settings = $.extend({
+	var settings = document.querySelector.extend({
 		items: 1,
 		dots: false,
 		loop: true,
@@ -90,10 +90,10 @@ $.fn.myOwl = function(options) {
 /*==========================================================
 				2. smooth scroll
 ======================================================================*/
-$.fn.scrollView = function () {
+document.querySelector.fn.scrollView = function () {
 	return this.each(function () {
-		$('html, body').animate({
-			scrollTop: $(this).offset().top
+		document.querySelector('html, body').animate({
+			scrollTop: document.querySelector(this).offset().top
 		}, 1000);
 	});
 }
@@ -102,8 +102,8 @@ $.fn.scrollView = function () {
 /*==========================================================
 				3. custom input type number function
 ======================================================================*/
-$.fn.customNumber = function(options) {
-	var settings = $.extend ({
+document.querySelector.fn.customNumber = function(options) {
+	var settings = document.querySelector.extend ({
 		plusIcon: '',
 		minusIcon: ''
 	}, options);
@@ -112,7 +112,7 @@ $.fn.customNumber = function(options) {
 	this.append('<span class="sub">'+ settings.minusIcon +'</span>');
 	
 	return this.each(function () {
-			let spinner = $(this),
+			let spinner = document.querySelector(this),
 				input = spinner.find('input[type="number"]'),
 				add = spinner.find('.add'),
 				sub = spinner.find('.sub');
@@ -140,25 +140,25 @@ $.fn.customNumber = function(options) {
 /*==========================================================
 				4. custom input type select function
 ======================================================================*/
-$.fn.mySelect = function(options) {
-	let $this = $(this), 
-		numberOfOptions = $(this).children('option');
+document.querySelector.fn.mySelect = function(options) {
+	let document.querySelectorthis = document.querySelector(this), 
+		numberOfOptions = document.querySelector(this).children('option');
 
-	$this.addClass('select-hidden'); 
-	$this.wrap('<div class="select"></div>');
-	$this.after('<div class="select-styled"></div>');
+	document.querySelectorthis.addClass('select-hidden'); 
+	document.querySelectorthis.wrap('<div class="select"></div>');
+	document.querySelectorthis.after('<div class="select-styled"></div>');
 
-	let styledSelect = $this.next('.select-styled');
-	styledSelect.text($this.children('option').eq(0).text());
+	let styledSelect = document.querySelectorthis.next('.select-styled');
+	styledSelect.text(document.querySelectorthis.children('option').eq(0).text());
 	
-	let list = $('<ul />', {
+	let list = document.querySelector('<ul />', {
 		'class': 'select-options'
 	}).insertAfter(styledSelect);
 	
 	for (let i = 0; i < numberOfOptions.length; i++) {
-		$('<li />', {
-			text: $this.children('option').eq(i).text(),
-			rel: $this.children('option').eq(i).val()
+		document.querySelector('<li />', {
+			text: document.querySelectorthis.children('option').eq(i).text(),
+			rel: document.querySelectorthis.children('option').eq(i).val()
 		}).appendTo(list);
 	}
 	
@@ -166,24 +166,24 @@ $.fn.mySelect = function(options) {
 	
 	styledSelect.on('click', function(e) {
 		e.stopPropagation();
-		$('.select-styled.active').not(this).each(function(){
-			$(this).removeClass('active').next('.select-options').fadeIn();
+		document.querySelector('.select-styled.active').not(this).each(function(){
+			document.querySelector(this).removeClass('active').next('.select-options').fadeIn();
 		});
-		$(this).toggleClass('active').next('.select-options').toggle();
-		$(this).parent().toggleClass('focus');
+		document.querySelector(this).toggleClass('active').next('.select-options').toggle();
+		document.querySelector(this).parent().toggleClass('focus');
 	});
 	
 	listItems.on('click', function(e) {
 		e.stopPropagation();
-		styledSelect.text($(this).text()).removeClass('active');
-		$this.val($(this).attr('rel'));
+		styledSelect.text(document.querySelector(this).text()).removeClass('active');
+		document.querySelectorthis.val(document.querySelector(this).attr('rel'));
 		list.hide();
-		if ($(this).parent().parent().hasClass('focus')) {
-			$(this).parent().parent().removeClass('focus');
+		if (document.querySelector(this).parent().parent().hasClass('focus')) {
+			document.querySelector(this).parent().parent().removeClass('focus');
 		}
 	});
 	
-	$(document).on('click', function() {
+	document.querySelector(document).on('click', function() {
 		styledSelect.removeClass('active');
 		list.hide();
 	});
@@ -193,7 +193,7 @@ $.fn.mySelect = function(options) {
 				5. email patern 
 ======================================================================*/
 function email_pattern(email) {
-	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+document.querySelector/;
 	return regex.test(email);
 }
 
@@ -202,10 +202,10 @@ function email_pattern(email) {
 				6. equalheight function
 ======================================================================*/
 let equalHeight = () => {
-	let pricingImage = $('.pricing-image'),
-		pricingFeature = $('.pricing-feature-group');
+	let pricingImage = document.querySelector('.pricing-image'),
+		pricingFeature = document.querySelector('.pricing-feature-group');
 	
-	if ($(window).width() > 991) {
+	if (document.querySelector(window).width() > 991) {
 		pricingFeature.css('height', pricingImage.outerHeight());
 	} else {
 		pricingFeature.css('height', 100+'%');
@@ -218,20 +218,20 @@ let equalHeight = () => {
 	======================================================================*/
 function fixedtabel() {
 
-	let table = $('.xs-table');
+	let table = document.querySelector('.xs-table');
 	
-	if (!($(window).width() > 576)) {
-		if ($('.xs-table.fixed-column').length === 0) {
+	if (!(document.querySelector(window).width() > 576)) {
+		if (document.querySelector('.xs-table.fixed-column').length === 0) {
 			let fixedCol = table.clone().insertBefore(table).addClass('fixed-column');
 		}
 	} else {
-		$('.xs-table.fixed-column').remove();
+		document.querySelector('.xs-table.fixed-column').remove();
 	}
-	let fixedCol = $('.xs-table.fixed-column');
+	let fixedCol = document.querySelector('.xs-table.fixed-column');
 	fixedCol.find('th:not(:first-child),td:not(:first-child)').remove();
 
 	fixedCol.find('tr').each(function (i, elem) {
-		$(this).height(table.find('tr:eq(' + i + ')').height());
+		document.querySelector(this).height(table.find('tr:eq(' + i + ')').height());
 	});
 };
 
@@ -239,17 +239,17 @@ function fixedtabel() {
 				8. content to center banner section
 ======================================================================*/
 function centerContent() {
-	let content = $('.contet-to-center > .container'),
-			header = $('.header-transparent');
+	let content = document.querySelector('.contet-to-center > .container'),
+			header = document.querySelector('.header-transparent');
 		
-		if ($(window).width() > 991) {
+		if (document.querySelector(window).width() > 991) {
 			content.css('margin-top', header.outerHeight());
 		} else {
 			content.css('margin-top', 0+'px');
 		}
 }
 
-$(window).on('load', function() {
+document.querySelector(window).on('load', function() {
 
 	// equal hight init
 	equalHeight();
@@ -261,12 +261,12 @@ $(window).on('load', function() {
 	/*==========================================================
 				9. prelaoder
 	======================================================================*/
-	$('#preloader').addClass('loaded');
+	document.querySelector('#preloader').addClass('loaded');
 	document.getElementById("preloader").classList.add('loaded');
 
 }); // END load Function 
 
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
 	// equal hight init
 	equalHeight();
 	// fixedtable init
@@ -277,18 +277,18 @@ $(document).ready(function() {
 	/*==========================================================
 				10. preloader close button	
 	======================================================================*/
-	$('.prelaoder-btn').on('click', function (e) {
+	document.querySelector('.prelaoder-btn').on('click', function (e) {
 		e.preventDefault();
-		if (!($('#preloader').hasClass('loaded'))) {
-			$('#preloader').addClass('loaded');
+		if (!(document.querySelector('#preloader').hasClass('loaded'))) {
+			document.querySelector('#preloader').addClass('loaded');
 		}
 	})
 
 	/*==========================================================
 			11. mega navigation menu init
 	======================================================================*/
-	if ($('.xs-menus').length > 0) {
-		$('.xs-menus').xs_nav({
+	if (document.querySelector('.xs-menus').length > 0) {
+		document.querySelector('.xs-menus').xs_nav({
 			mobileBreakpoint: 992,
 		});
 	}
@@ -296,8 +296,8 @@ $(document).ready(function() {
 	/*==========================================================
 			12. twitter api init
 	======================================================================*/
-	if ($('.xs-tweet').length > 0) {
-		$('.xs-tweet').twittie({
+	if (document.querySelector('.xs-tweet').length > 0) {
+		document.querySelector('.xs-tweet').twittie({
 			dateFormat: '%b. %d, %Y',
 			template: '{{tweet}} <div class="date">{{date}}</div> <a href="{{url}}" target="_blank">Details</a>',
 			count: 2,
@@ -309,8 +309,8 @@ $(document).ready(function() {
 	/*==========================================================
 			13. client slider
 	======================================================================*/
-	if ($('.xs-client-slider').length > 0) {
-		$('.xs-client-slider').myOwl({
+	if (document.querySelector('.xs-client-slider').length > 0) {
+		document.querySelector('.xs-client-slider').myOwl({
 			items: 5,
 			responsive: {
 				0: {
@@ -329,8 +329,8 @@ $(document).ready(function() {
 	/*==========================================================
 			14. testimonial slider
 	======================================================================*/
-	if ($('.xs-testimonial-slider').length > 0) {
-		$('.xs-testimonial-slider').myOwl({
+	if (document.querySelector('.xs-testimonial-slider').length > 0) {
+		document.querySelector('.xs-testimonial-slider').myOwl({
 			items: 3,
 			center: true,
 			animateOut: 'fadeOut',
@@ -352,8 +352,8 @@ $(document).ready(function() {
 	/*==========================================================
 				15. blog post gallery slider
 	======================================================================*/
-	if ($('.post-gallery-slider').length > 0) {
-		$('.post-gallery-slider').myOwl({
+	if (document.querySelector('.post-gallery-slider').length > 0) {
+		document.querySelector('.post-gallery-slider').myOwl({
 			nav: true,
 			navText: ['<i class="icon icon-arrow-left"></i>', '<i class="icon icon-arrow-right"></i>'],
 			responsive: {
@@ -368,18 +368,18 @@ $(document).ready(function() {
 				16. contact form init
 	======================================================================*/
 
-	$(document).on('submit', '#xs-contact-form', function(event) {
+	document.querySelector(document).on('submit', '#xs-contact-form', function(event) {
 		event.preventDefault();
 		/* Act on the event */
 
-		var xs_contact_name = $('#xs_contact_name'),
-			xs_contact_email = $('#xs_contact_email'),
-			xs_contact_website = $('#xs_contact_website'),
-			x_contact_massage = $('#x_contact_massage'),
-			xs_contact_submit = $('#xs_contact_submit'),
+		var xs_contact_name = document.querySelector('#xs_contact_name'),
+			xs_contact_email = document.querySelector('#xs_contact_email'),
+			xs_contact_website = document.querySelector('#xs_contact_website'),
+			x_contact_massage = document.querySelector('#x_contact_massage'),
+			xs_contact_submit = document.querySelector('#xs_contact_submit'),
 			xs_contact_error = false;
 
-		$('.xpeedStudio_success_message').remove();
+		document.querySelector('.xpeedStudio_success_message').remove();
 
 		if (xs_contact_name.val().trim() === '') {
 			xs_contact_name.addClass('invaild');
@@ -421,7 +421,7 @@ $(document).ready(function() {
 
 		if (xs_contact_error === false) {
 			xs_contact_submit.before().hide().fadeIn();
-			$.ajax({
+			document.querySelector.ajax({
 					type: "POST",
 					url: "assets/php/contact-form.php",
 					data: {
@@ -434,32 +434,32 @@ $(document).ready(function() {
 					xs_contact_submit.after('<p class="xpeedStudio_success_message">' + result + '</p>').hide().fadeIn();
 
 					setTimeout(() => {
-						$(".xpeedStudio_success_message").fadeOut(1000, function() {
-							$(this).remove();
+						document.querySelector(".xpeedStudio_success_message").fadeOut(1000, function() {
+							document.querySelector(this).remove();
 						});
 					}, 5000);
 
-					$('#xs-contact-form')[0].reset();
+					document.querySelector('#xs-contact-form')[0].reset();
 				}
 			});
 		}
 	});
 
 	// off autocomplete
-	$('input').each(function(e) {
-		$(this).attr('autocomplete', 'off');
-		$(this).attr('autocorrect', 'off');
+	document.querySelector('input').each(function(e) {
+		document.querySelector(this).attr('autocomplete', 'off');
+		document.querySelector(this).attr('autocorrect', 'off');
 	});
 
 	
-	$('.xs-service-block').on('mouseenter', function() {
-		if (!$(this).hasClass('active')) {
-			$(this).addClass('active')
+	document.querySelector('.xs-service-block').on('mouseenter', function() {
+		if (!document.querySelector(this).hasClass('active')) {
+			document.querySelector(this).addClass('active')
 		}
 	});
-	$('.xs-service-block').on('mouseleave', function(e) {
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
+	document.querySelector('.xs-service-block').on('mouseleave', function(e) {
+		if (document.querySelector(this).hasClass('active')) {
+			document.querySelector(this).removeClass('active');
 		}
 	});
 
@@ -467,8 +467,8 @@ $(document).ready(function() {
 	/*==========================================================
 			17. video popup init
 	======================================================================*/
-	if ($('.xs-video-popup').length > 0) {
-		$('.xs-video-popup').magnificPopup({
+	if (document.querySelector('.xs-video-popup').length > 0) {
+		document.querySelector('.xs-video-popup').magnificPopup({
 			disableOn: 700,
 			type: 'iframe',
 			mainClass: 'mfp-fade',
@@ -481,44 +481,44 @@ $(document).ready(function() {
 	/*==========================================================
 		 18. Side Offset cart menu open
 	======================================================================*/
-	if ($('.offset-side-bar').length > 0) {
-		$('.offset-side-bar').on('click', function (e){
+	if (document.querySelector('.offset-side-bar').length > 0) {
+		document.querySelector('.offset-side-bar').on('click', function (e){
 			e.preventDefault();
 			e.stopPropagation();
-			$('.cart-group').addClass('isActive');
+			document.querySelector('.cart-group').addClass('isActive');
 		});
 	}
-	if ($('.close-side-widget').length > 0) {
-		$('.close-side-widget').on('click', function (e){
+	if (document.querySelector('.close-side-widget').length > 0) {
+		document.querySelector('.close-side-widget').on('click', function (e){
 			e.preventDefault();
-			$('.cart-group').removeClass('isActive');
+			document.querySelector('.cart-group').removeClass('isActive');
 		});
 	}
-	if ($('.navSidebar-button').length > 0) {
-		$('.navSidebar-button').on('click', function (e){
+	if (document.querySelector('.navSidebar-button').length > 0) {
+		document.querySelector('.navSidebar-button').on('click', function (e){
 			e.preventDefault();
 			e.stopPropagation();
-			$('.info-group').addClass('isActive');
+			document.querySelector('.info-group').addClass('isActive');
 		});
 	}
-	if ($('.close-side-widget').length > 0) {
-		$('.close-side-widget').on('click', function (e){
+	if (document.querySelector('.close-side-widget').length > 0) {
+		document.querySelector('.close-side-widget').on('click', function (e){
 			e.preventDefault();
-			$('.info-group').removeClass('isActive');
+			document.querySelector('.info-group').removeClass('isActive');
 		});
 	}
-	$('body').on('click', function (e) {
-		$('.info-group').removeClass('isActive');
-		$('.cart-group').removeClass('isActive');
+	document.querySelector('body').on('click', function (e) {
+		document.querySelector('.info-group').removeClass('isActive');
+		document.querySelector('.cart-group').removeClass('isActive');
 	});
-	$('.xs-sidebar-widget').on('click', function (e) {
+	document.querySelector('.xs-sidebar-widget').on('click', function (e) {
 		e.stopPropagation();
 	});
 
 	/*=============================================================
 				19.	wow animation init
 	=========================================================================*/
-	$(function(){
+	document.querySelector(function(){
 		var wow = new WOW({
 			boxClass: 'wow',
 			animateClass: 'animated',
@@ -533,29 +533,29 @@ $(document).ready(function() {
 	/*=============================================================
 				20. my custom select init
 	=========================================================================*/
-	if ($('select').length > 0) {
-		$('select').mySelect();
+	if (document.querySelector('select').length > 0) {
+		document.querySelector('select').mySelect();
 	}
 
 	/*=============================================================
 				21. tab swipe indicator
 	=========================================================================*/
-	if ($('.tab-swipe').length > 0) {
-		$('.tab-swipe').append('<li class="indicator"></li>');
-		if ($('.tab-swipe li a').hasClass('active')) { 
-			let cLeft = $('.tab-swipe li a.active').position().left+'px',
-				cWidth = $('.tab-swipe li a.active').css('width');
-			$('.indicator').css({
+	if (document.querySelector('.tab-swipe').length > 0) {
+		document.querySelector('.tab-swipe').append('<li class="indicator"></li>');
+		if (document.querySelector('.tab-swipe li a').hasClass('active')) { 
+			let cLeft = document.querySelector('.tab-swipe li a.active').position().left+'px',
+				cWidth = document.querySelector('.tab-swipe li a.active').css('width');
+			document.querySelector('.indicator').css({
 				left: cLeft,
 				width: cWidth
 			})
 		}
-		$('.tab-swipe li a').on('click', function () {
-			$('.tab-swipe li a').removeClass('isActive');
-			$(this).addClass('isActive');
-			let cLeft = $('.tab-swipe li a.isActive').position().left+'px',
-				cWidth = $('.tab-swipe li a.isActive').css('width');
-			$('.indicator').css({
+		document.querySelector('.tab-swipe li a').on('click', function () {
+			document.querySelector('.tab-swipe li a').removeClass('isActive');
+			document.querySelector(this).addClass('isActive');
+			let cLeft = document.querySelector('.tab-swipe li a.isActive').position().left+'px',
+				cWidth = document.querySelector('.tab-swipe li a.isActive').css('width');
+			document.querySelector('.indicator').css({
 				left: cLeft,
 				width: cWidth
 			})
@@ -565,15 +565,15 @@ $(document).ready(function() {
 	/*=============================================================
 				22. pricing matrix expand slider
 	=========================================================================*/
-	if ($('.pricing-matrix-slider').length > 0) {
-		$('.pricing-matrix-slider').on( 'initialized.owl.carousel translated.owl.carousel', function() {
-			var $this = $(this);
-			$this.find( '.owl-item.last-child' ).each( function() {
-				$(this).removeClass( 'last-child' );
+	if (document.querySelector('.pricing-matrix-slider').length > 0) {
+		document.querySelector('.pricing-matrix-slider').on( 'initialized.owl.carousel translated.owl.carousel', function() {
+			var document.querySelectorthis = document.querySelector(this);
+			document.querySelectorthis.find( '.owl-item.last-child' ).each( function() {
+				document.querySelector(this).removeClass( 'last-child' );
 			});
-			$(this).find( '.owl-item.active' ).last().addClass( 'last-child' );
+			document.querySelector(this).find( '.owl-item.active' ).last().addClass( 'last-child' );
 		});
-		$('.pricing-matrix-slider').myOwl({
+		document.querySelector('.pricing-matrix-slider').myOwl({
 			items: 3,
 			mouseDrag: false,
 			autoplay: false,
@@ -601,29 +601,29 @@ $(document).ready(function() {
 	/*=============================================================
 				23. feature section prev class get function
 	=========================================================================*/
-	if ($('.xs-feature-section').length > 0) {
-		if ($('.xs-feature-section').prev().hasClass('xs-bg-gray')) {
-			$('.xs-feature-section').addClass('xs-bg-gray');
+	if (document.querySelector('.xs-feature-section').length > 0) {
+		if (document.querySelector('.xs-feature-section').prev().hasClass('xs-bg-gray')) {
+			document.querySelector('.xs-feature-section').addClass('xs-bg-gray');
 		} else {
-			$('.xs-feature-section').removeClass('xs-bg-gray');
+			document.querySelector('.xs-feature-section').removeClass('xs-bg-gray');
 		}
-		if ($('.xs-footer-section').prev().hasClass('xs-bg-gray')) {
-			$('.xs-footer-section').children('.xs-feature-section').addClass('xs-bg-gray');
+		if (document.querySelector('.xs-footer-section').prev().hasClass('xs-bg-gray')) {
+			document.querySelector('.xs-footer-section').children('.xs-feature-section').addClass('xs-bg-gray');
 		} else {
-			$('.xs-footer-section').children('.xs-feature-section').removeClass('xs-bg-gray');
+			document.querySelector('.xs-footer-section').children('.xs-feature-section').removeClass('xs-bg-gray');
 		}
 	};
 
 	/*=============================================================
 				24. pricing expand function
 	=========================================================================*/
-	if ($('.pricing-expand').length > 0) {
-		if ($(window).width() > 991) {
-			let pricingContainer = $('.pricing-expand.pricing-matrix'),
+	if (document.querySelector('.pricing-expand').length > 0) {
+		if (document.querySelector(window).width() > 991) {
+			let pricingContainer = document.querySelector('.pricing-expand.pricing-matrix'),
 			height = Math.floor(pricingContainer.height()),
-			children = $('.pricing-expand.pricing-matrix .pricing-matrix-slider'),
+			children = document.querySelector('.pricing-expand.pricing-matrix .pricing-matrix-slider'),
 			childreHeight = children.height(),
-			gap = $('.pricing-expand.pricing-matrix .gap'),
+			gap = document.querySelector('.pricing-expand.pricing-matrix .gap'),
 			gapHeight = gap.height(),
 			mini = Math.floor((height - ((childreHeight / 2) + (gap.length * 1)))),
 			animSpeed = 500;
@@ -632,41 +632,41 @@ $(document).ready(function() {
 			pricingContainer.attr('data-min', mini+'px');
 			pricingContainer.css('height', mini+'px');
 
-			if ($('.content-collapse-wraper').length === 0) {
+			if (document.querySelector('.content-collapse-wraper').length === 0) {
 				pricingContainer.after(
 					'<div class="content-collapse-wraper"><a href="#" class="btn btn-primary expand-btn">Load More <i class="icon icon-arrow_down"></i></a></div>'
 				);	
 			}
 		
-			$('.expand-btn').on('click', function (e) {
+			document.querySelector('.expand-btn').on('click', function (e) {
 				e.preventDefault();
-				let content = $(this).parent().prev();
+				let content = document.querySelector(this).parent().prev();
 				content.animate({
 					'height': content.attr('data-height')
 				}, animSpeed);
 				content.addClass('expand');
-				$(this).addClass('hide');
+				document.querySelector(this).addClass('hide');
 			});
 		} else {
-			if ($('.pricing-matrix').hasClass('pricing-expand')) {
-				$('.pricing-matrix').removeClass('pricing-expand');
+			if (document.querySelector('.pricing-matrix').hasClass('pricing-expand')) {
+				document.querySelector('.pricing-matrix').removeClass('pricing-expand');
 				console.log('hi')
 			} else{
-				$('.pricing-matrix').removeClass('pricing-expand');
+				document.querySelector('.pricing-matrix').removeClass('pricing-expand');
 			}
 		}
 	}
-	$('.pricing-matrix .gap').prev().addClass('border-bottom-0');
+	document.querySelector('.pricing-matrix .gap').prev().addClass('border-bottom-0');
 
 	/*=============================================================
 				25. accordion add class "isActive" function
 	=========================================================================*/
-	if ($('.xs-accordion .card-header > a').length > 0) {
-		$('.xs-accordion .card-header > a').on('click', function () {
-			if (!$(this).parent().parent().hasClass('isActive')) {
-				$(this).parent().parent().prevAll().removeClass('isActive');
-				$(this).parent().parent().nextAll().removeClass('isActive');
-				$(this).parent().parent().addClass('isActive');
+	if (document.querySelector('.xs-accordion .card-header > a').length > 0) {
+		document.querySelector('.xs-accordion .card-header > a').on('click', function () {
+			if (!document.querySelector(this).parent().parent().hasClass('isActive')) {
+				document.querySelector(this).parent().parent().prevAll().removeClass('isActive');
+				document.querySelector(this).parent().parent().nextAll().removeClass('isActive');
+				document.querySelector(this).parent().parent().addClass('isActive');
 			}
 		});
 	}
@@ -674,16 +674,16 @@ $(document).ready(function() {
 	/*=============================================================
 				26. click and go to current section init
 	=========================================================================*/
-	$('.comment-reply-link').on('click', function (event) {
+	document.querySelector('.comment-reply-link').on('click', function (event) {
 		event.preventDefault();
-		$('#comment-form').scrollView();
+		document.querySelector('#comment-form').scrollView();
 	});
 
 	/*=============================================================
 			 27. input number increase
 	=========================================================================*/
 
-	$('.custom_number').customNumber({
+	document.querySelector('.custom_number').customNumber({
 		plusIcon: '<i class="icon icon-plus"></i>',
 		minusIcon: '<i class="icon icon-minus"></i>'
 	});
@@ -692,12 +692,12 @@ $(document).ready(function() {
 	/*=============================================================
 			 28. right click , ctrl+u and ctrl+shift+i disabled
 	=========================================================================*/
-	$('body').on('contextmenu', function (e) {
+	document.querySelector('body').on('contextmenu', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		return false;
 	});
-	$(document).on('keydown', function(e) {
+	document.querySelector(document).on('keydown', function(e) {
 		if (
 				(e.ctrlKey && (e.keyCode == 85)) ||
 				(e.ctrlKey && (e.shiftKey && e.keyCode == 73)) ||
@@ -713,9 +713,9 @@ $(document).ready(function() {
 	/*=============================================================
 			 29. image dragable false setup
 	=========================================================================*/
-	$('img').each(function() {
-		$(this).attr('draggable', 'false');
-		$(this).on('mousedown', function (event) {
+	document.querySelector('img').each(function() {
+		document.querySelector(this).attr('draggable', 'false');
+		document.querySelector(this).on('mousedown', function (event) {
 			if (event.preventDefault) {
 				event.preventDefault()
 			}
@@ -725,18 +725,18 @@ $(document).ready(function() {
 	/*=============================================================
 			 30. ajaxchimp init
 	=========================================================================*/
-	if ($('#subscribe-form').length > 0) {
-		$('#subscribe-form').ajaxChimp({
+	if (document.querySelector('#subscribe-form').length > 0) {
+		document.querySelector('#subscribe-form').ajaxChimp({
 				url: 'https://facebook.us8.list-manage.com/subscribe/post?u=85f515a08b87483d03fee7755&amp;id=66389dc38b'
 		});
 	}
 
-	if ($('.wave_animation').length > 0 ) {
-		$('.wave_animation').parallax();
+	if (document.querySelector('.wave_animation').length > 0 ) {
+		document.querySelector('.wave_animation').parallax();
 	}
 
-	if ($('.xs-modal-popup').length > 0) {
-		$('.xs-modal-popup').magnificPopup({
+	if (document.querySelector('.xs-modal-popup').length > 0) {
+		document.querySelector('.xs-modal-popup').magnificPopup({
 			type: 'inline',
 			fixedContentPos: false,
 			fixedBgPos: true,
@@ -752,11 +752,11 @@ $(document).ready(function() {
 
 }); // end ready function
 
-$(window).on('scroll', function() {
+document.querySelector(window).on('scroll', function() {
 
 }); // END Scroll Function 
 
-$(window).on('resize', function() {
+document.querySelector(window).on('resize', function() {
 	// equal hight init
 	equalHeight();
 	// fixedtable init
@@ -769,7 +769,7 @@ $(window).on('resize', function() {
 			31. XpeedStudio Maps
 ======================================================================*/
 
-if ($('#xs-map').length > 0) {
+if (document.querySelector('#xs-map').length > 0) {
 	// When the window has finished loading create our google map below
 	google.maps.event.addDomListener(window, 'load', init);
         
@@ -807,4 +807,4 @@ if ($('#xs-map').length > 0) {
 	}
 }
 
-})(jQuery);
+})(document.querySelector);
