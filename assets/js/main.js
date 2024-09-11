@@ -261,6 +261,7 @@ $(window).on('load', function() {
 				9. prelaoder
 	======================================================================*/
 	$('#preloader').addClass('loaded');
+	document.getElementById("preloader").classList.add('loaded');
 
 }); // END load Function 
 
