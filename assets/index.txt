@@ -40,7 +40,7 @@
 	<![endif]-->
 
 	<!-- prelaoder -->
-	<div id="preloader">
+	<div id="preloader" class="loaded">
     <div class="preloader-wrapper">
         <div class="spinner"></div>
     </div>
