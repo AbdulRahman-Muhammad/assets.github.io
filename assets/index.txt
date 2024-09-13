@@ -11,7 +11,7 @@
 <link rel="stylesheet" href=""https://html.xpeedstudio.com/hostinza/assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://html.xpeedstudio.com/hostinza/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://html.xpeedstudio.com/hostinza/assets/css/animate.css">
-<link rel="stylesheet" href="https://abdulrahman-muhammad.github.io/assets.github.io/css/iconfont_modified.css">
+<link rel="stylesheet" href="https://abdulrahman-muhammad.github.io/assets.github.io/assets/css/iconfont_modified.css">
 <link rel="stylesheet" href="https://html.xpeedstudio.com/hostinza/assets/css/magnific-popup.css">
 <link rel="stylesheet" href="https://html.xpeedstudio.com/hostinza/assets/css/owl.carousel.min.css">
 <link rel="stylesheet" href="https://html.xpeedstudio.com/hostinza/assets/css/owl.theme.default.min.css">
